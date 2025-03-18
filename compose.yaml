@@ -2,12 +2,12 @@ services:
     vprodb: 
       build:
          context: ./Docker-files/db
-      image: vprodcontainers/vprofiledb
+      image: dgprasad82/vprofile-db
       container_name: vprodb
       ports:
          - "3306:3306"
       volumes:
-         - vprodbdata: /var/lib/mysql
+         - vprodbdata:/var/lib/mysql
       environment: 
          - MYSQL_ROOT_PASSWORD = vprodpass
 
@@ -30,17 +30,17 @@ services:
     vproapp: 
       build:
          context: ./Docker-files/app
-      image: vprodcontainers/vprofileapp
+      image: dgprasad82/vprofile-app
       container_name: vproapp
       ports:
          - "8080:8080"
       volumes:
-         - vproappdata: /usr/local/tomcat/webapps
+         - vproappdata:/usr/local/tomcat/webapps
 
     vproweb: 
       build:
          context: ./Docker-files/web
-      image: vprodcontainers/vprofileweb
+      image: dgprasad82/vprofile-aweb
       container_name: vproweb
       ports:
          - "80:80"
